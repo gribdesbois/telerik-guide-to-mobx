@@ -1,4 +1,4 @@
-import { observable, decorate, computed, action } from 'mobx'
+import { observable, decorate, computed, action, reaction, autorun } from 'mobx'
 
 class CounterStore {
   @observable counter = 0
@@ -8,4 +8,16 @@ class CounterStore {
   @action incrementCounter() {
     return this.counter + 1
   }
+
+
+ 
 }
+
+reaction(() => data, (data, reaction) => { sideEffect }, options?)
+ const customReactionCounter = reaction(
+   ()=> counter.length > 100,
+   counter => console.log(`Counter is: ${counter}`)
+ )
+autorun(() => {
+  console.log(`Counter changed to : ${this.counter}`)
+})
